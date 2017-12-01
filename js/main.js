@@ -1,6 +1,6 @@
-document.getElementById('myForm').addEventListener('submit',saveBookmarks);
+document.getElementById('myForm').addEventListener('submit',addBookmarks);
 
-function saveBookmarks(e){
+function addBookmarks(e){
     var siteName = document.getElementById("inputSiteName").value;
     var siteUrl  = document.getElementById("inputUrl").value;
 
@@ -32,6 +32,10 @@ function saveBookmarks(e){
         localStorage.setItem('bookmarks',JSON.stringify(bookmarks));
     }
 
+    //clear form
+    document.getElementById("myForm").reset();
+
+    
     displayBookmarkTabs();
 
     //prevent the form from submitting
