@@ -10,6 +10,13 @@ function saveBookmarks(e){
         return false;
     }
 
+    var expression =  "^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?";
+    var regex = new RegExp(expression);
+    if(!siteUrl.match(regex)){
+        alert("Please enter a valid URL");
+        return false;
+    }
+
     var bookmark = {
         name:siteName,
         url:siteUrl
