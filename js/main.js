@@ -4,6 +4,12 @@ function saveBookmarks(e){
     var siteName = document.getElementById("inputSiteName").value;
     var siteUrl  = document.getElementById("inputUrl").value;
 
+    if(!siteName || !siteUrl){
+
+        alert("Please fill the both fields !!!");
+        return false;
+    }
+
     var bookmark = {
         name:siteName,
         url:siteUrl
