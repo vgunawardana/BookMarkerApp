@@ -4,16 +4,8 @@ function saveBookmarks(e){
     var siteName = document.getElementById("inputSiteName").value;
     var siteUrl  = document.getElementById("inputUrl").value;
 
-    if(!siteName || !siteUrl){
-
-        alert("Please fill the both fields !!!");
-        return false;
-    }
-
-    var expression =  "^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?";
-    var regex = new RegExp(expression);
-    if(!siteUrl.match(regex)){
-        alert("Please enter a valid URL");
+    //call form validation method
+    if(!validateForm(siteName,siteUrl)){
         return false;
     }
 
@@ -77,4 +69,21 @@ function displayBookmarkTabs(){
                             '</h3>'+
                             '</div>';
     }
+}
+
+function validateForm(siteName,siteUrl){
+    if(!siteName || !siteUrl){
+
+        alert("Please fill the both fields !!!");
+        return false;
+    }
+
+    var expression =  "^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?";
+    var regex = new RegExp(expression);
+    if(!siteUrl.match(regex)){
+        alert("Please enter a valid URL");
+        return false;
+    }
+
+    return true;
 }
